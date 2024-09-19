@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>I'm API</h1>
+        <p>Open the button</p>
+        <button class="btn btn-primary" id="loadProducts">Load API</button>
+        <ul class="list-group mt-3" id="productList"></ul>
+      </div>
+    <script>
+        document.getElementById('loadProducts').addEventListener('click', function () {
+          fetch('https://fakestoreapi.com/users')
+            .then(res => res.json())
+            .then(products => {
+              const productList = document.getElementById('productList');
+              productList.innerHTML = '';
+              products.forEach(product => {
+                const li = document.createElement('li');
+                li.classList.add('list-group-item');
+                li.textContent = product.title;
+                productList.appendChild(li);
+              });
+            })
+            .catch(error => console.error('Error:', error));
+        });
+      </script>
+</body>
+</html>
