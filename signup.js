@@ -3,8 +3,8 @@ signUpForm.addEventListener('submit', async function (e) {
     e.preventDefault();
 
 
-    let userEmailInput = document.getElementById('userEmail').value;
-    let userPasswordInput = document.getElementById('userPassword').value;
+    let userEmailInput = document.getElementById('userEmail').value.trim();
+    let userPasswordInput = document.getElementById('userPassword').value.trim();
     let localData = localStorage.getItem('user');
     let usersInfo = JSON.parse(localData);
    
